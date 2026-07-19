@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>テキストをHTML形式に変換</title>
+</head>
+<body>
+    <textarea id="inputText" rows="16" cols="100"></textarea>
+    <textarea id="outputHtml" rows="16" cols="100" readonly></textarea><br>
+    <button onclick="convertToHtml()">htmlに変換</button><br>
+    <p>!改行取り消し時は余白タブを消すこと！</p>
+    <textarea id="inputText2" rows="16" cols="100"></textarea>
+    <textarea id="outputHtml2" rows="16" cols="100" readonly></textarea><br>
+    <button onclick="kaigyoTorikeshi()">改行削除</button><br>
+
+    <script>
+        function convertToHtml() {
+            // テキストボックスの要素を取得
+            var inputText = document.getElementById("inputText").value;
+
+            // 改行でテキストを分割して配列に格納
+            var lines = inputText.split('\n');
+
+            // 各行を<p>要素で囲んでHTML形式に変換
+                var htmlText = "";
+            for (var i = 0; i < lines.length; i++) {
+                if (lines[i].trim() !== "") {
+                    htmlText += "<p>" + lines[i] + "</p>\n";
+                }
+            }
+
+            // 結果を出力用テキストボックスに表示
+            document.getElementById("outputHtml").value = htmlText;
+        }
+
+        function kaigyoTorikeshi() {
+            // テキストボックスの要素を取得
+            var inputText = document.getElementById("inputText2").value;
+
+            // 改行でテキストを分割して配列に格納
+            var lines = inputText.split('\n');
+
+            // 各行の改行を取り消し
+                var htmlText = "";
+            for (var i = 0; i < lines.length; i++) {
+                if (lines[i].trim() !== "") {
+                    htmlText += lines[i];
+                }
+            }
+
+            // 結果を出力用テキストボックスに表示
+            document.getElementById("outputHtml2").value = htmlText;
+        }
+    </script>
+</body>
+</html>
+
+

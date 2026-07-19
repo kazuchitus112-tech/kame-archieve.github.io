@@ -1,0 +1,212 @@
+(vip2020)
+<header>
+    <div id="nav-drawer">
+        <input id="nav-input" type="checkbox" class="nav-unshown">
+        <label id="nav-open" for="nav-input"><span></span></label>
+        <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+        <div id="nav-content">
+            <h2 class="header-title">index</h2>
+            <h3 class="header-link">グラブル部</h3>
+            <ul>
+                <li><a href="#gbf1">胎動する世界HL</a></li>
+                <li><a href="#gbf2">胎動する世界HL-2</a></li>
+                <li><a href="#gbf3">プロバハ･天司HL</a></li>
+                <li><a href="#gbf4">マルチバトル武器</a></li>
+                <li><a href="#gbf5">マルチバトル一覧</a></li>
+                <li><a href="#gbf6">マルチバトル武器-2</a></li>
+                <li><a href="#gbf7">アーカルム4凸シリーズ</a></li> 
+                <li><a href="#gbf8">団栄誉・箱割り</a></li>
+                <li><a href="#gbf9">古戦場</a></li>
+                <li><a href="#gbf10">ルシファーHL</a></li>
+                <li><a href="#gbf11">胎動する世界HL-3</a></li>
+                <li><a href="#gbf12">古戦場報酬</li>
+                <li><a href="#gbf13">#団員募集</a></li>
+                <li><a href="#gbf14">胎動する世界HL-4</a></li>
+            </ul>
+
+            <h3 class="header-link">交通部</h3>
+            <ul>
+                <li><a href="#plane1">明京東雲国際空港-1</a></li>
+                <li><a href="#plane2">東国航空関連</a></li>
+                <li><a href="#plane3">明京-各島シャトル便</a></li>
+                <li><a href="#train1">整備新幹線構想-1</a></li>
+                <li><a href="#train2">北陸新幹線</a></li>
+                <li><a href="#train3">夜行電車</a></li>
+                <li><a href="#train4">京阪神快速線概説</a></li>
+                <li><a href="#train5">整備新幹線計画-2</a></li>
+                <li><a href="#train6">東武伊勢崎線</a></li>
+                <li><a href="#train7">京阪神快速</a></li>
+                <li><a href="#train8">東洋道本線優等列車</a></li>
+                <li><a href="#train9">リニア京島新幹線</a></li>
+                <li><a href="#train10">伊勢崎線運行形態</a></li>
+                <li><a href="#train11">高崎新線</a></li>
+                <li><a href="#train12">JR境界駅</a>
+                <li><a href="#plane4">明京東雲国際空港(2020/10)</a></li>
+                <li><a href="#21_train1">新幹線</a></li>
+            </ul>
+
+            <h3 class="header-link">Others</h3>
+            <ul>
+                <li><a href="#section1">flash-game</a></li>
+                <li><a href="#section2">garden-life</a></li>
+                <li><a href="#section3">fairly tale</li>
+                <li><a href="#section4">ニコ百シリーズ　渡辺謙三</a></li>
+                <li><a href="#section5">省庁再編</a></li>
+                <li><a href="#section6">テレビ</a></li>
+                <li><a href="#section7">かーはらしりーず</a></li>
+                <li><a href="#section8">妄想政治屋</a></li>
+                <li><a href="#section9">かーはらりすと</a></li>
+                <li><a href="#section10">物理学A</a></li>
+                <li><a href="#section11">太鼓の達人</a></li>
+                <li><a href="#section12">モンスト</a></li>
+                <li><a href="#section13">東京都区部再編</a></li>
+            </ul>
+            <h2 class="header-title">関連項目</h2>
+            <p><a href="vip.html">vip</a></p>
+        </div>
+    </div>
+</header>
+
+(HTML)
+
+<header>
+<div id="nav-drawer">
+    <input id="nav-input" type="checkbox" class="nav-unshown">
+    <label id="nav-open" for="nav-input"><span></span></label>
+    <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+    <div id="nav-content">
+        <ul>
+            <li><a href="#game1">伝説の黒竜</a></li>
+            <li><a href="#game2">路地裏コラボ</a></li>
+            <li><a href="#game3">grbl 古戦場</a></li>
+            <li><a href="#game4">#MMO</a></li>
+            <li><a href="#sub1">物理学A</a></li>
+            <li><a href="#sub2">微分積分学及び演習</a></li>
+            <li><a href="#sub3">基礎数学A及び演習（情報工・3単位）</a></li> 
+            <li><a href="#sub4">kisosu</a></li>
+            <li><a href="#sub5">電子回路</a></li>
+            <li><a href="#sub6">物理学A　成績</a></li>
+            <li><a href="#sub7">英語試験</a></li>
+            <li><a href="#train1">京都新線</a></li>
+            <li><a href="#train2">京田津新幹線　列車種別</a></li>
+            <li><a href="#train3">西洋道新幹線</a></li>
+            <li><a href="#train4">東洋道線</a></li>
+            <li><a href="#train5">中山道線</a></li>
+            <li><a href="#train6">京鶴線</a></li>
+            <li><a href="#train7">高崎新線</a></li>
+            <li><a href="#train8">駅ビル※未更新</a></li>
+            <li><a href="#sec1">night clab</a></li>
+            <li><a href="#sec2">ニコ百シリーズ</a></li>
+            <li><a href="#sec3">妄想政治屋</a></li>
+            <li><a href="#sec4">#typhoon</a></li>
+            <li><a href="#sec5">妄想政治屋</a></li>
+        </ul>
+        <h2 class="header-title">関連項目</h2>
+        <p><a href="vip2020.html"> 2020</a></p>
+    </div>
+</div>
+</header>
+
+(CSS)
+/*ヘッダー*/
+header {
+    padding:10px;
+    background: skyblue;
+    position: fixed;
+    right:0;
+    font-family: あんずもじ;
+    font-size: 20px;
+}
+
+.header-link{
+    margin: 8px;
+    color: #000;
+    font-size: 28px;
+}
+
+.header-title{
+    margin: 8px;
+    color: #000;
+    font-size: 40px;
+}
+
+#nav-drawer {
+    position: relative;
+}
+
+/*チェックボックス等は非表示に*/
+.nav-unshown {
+display:none;
+}
+
+/*アイコンのスペース*/
+#nav-open {
+display: inline-block;
+width: 30px;
+height: 22px;
+vertical-align: middle;
+}
+
+/*ハンバーガーアイコンをCSSだけで表現*/
+#nav-open span, #nav-open span:before, #nav-open span:after {
+position: absolute;
+height: 3px;/*線の太さ*/
+width: 25px;/*長さ*/
+border-radius: 3px;
+background: #555;
+display: block;
+content: '';
+cursor: pointer;
+}
+#nav-open span:before {
+bottom: -8px;
+}
+#nav-open span:after {
+bottom: -16px;
+}
+
+/*閉じる用の薄黒カバー*/
+#nav-close {
+display: none;/*はじめは隠しておく*/
+position: fixed;
+z-index: 99;
+top: 0;/*全体に広がるように*/
+right: 0;
+width: 100%;
+height: 100%;
+background: black;
+opacity: 0;
+transition: .3s ease-in-out;
+}
+
+/*中身*/
+#nav-content {
+overflow: auto;
+position: fixed;
+top: 0;
+right: 0;
+z-index: 9999;/*最前面に*/
+width: 90%;/*右側に隙間を作る（閉じるカバーを表示）*/
+max-width: 400px;/*最大幅（調整してください）*/
+height: 100%;
+background: #fff;/*背景色*/
+transition: .3s ease-in-out;/*滑らかに表示*/
+-webkit-transform: translateX(105%);
+transform: translateX(105%);/*左に隠しておく*/
+}
+
+/*チェックが入ったらもろもろ表示*/
+#nav-input:checked ~ #nav-close {
+display: block;/*カバーを表示*/
+opacity: .5;
+}
+
+#nav-input:checked ~ #nav-content {
+-webkit-transform: translateX(0%);
+transform: translateX(0%);/*中身を表示（右へスライド）*/
+box-shadow: 6px 0 25px rgba(0,0,0,.15);
+}
+
+.index{
+    float: left;
+}

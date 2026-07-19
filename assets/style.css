@@ -1,0 +1,305 @@
+/* ==========================================
+   全体の設定（目に優しいダークテーマ）
+   ========================================== */
+
+:root{
+  --bg:#1c1c1c;
+  --panel:#000000;
+  --border:#444444;
+  --text:#e0e0e0;
+  --muted:#aaaaaa;
+  --accent:#556b2f;
+}
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  line-height:1.7;
+}
+body.overflow-hidden{ overflow:hidden; }
+ 
+/* ---------- レイアウト全体 ---------- */
+#page-wrapper{
+  display:flex;
+  align-items:flex-start;
+  min-height:100vh;
+}
+
+/*-----------------headline----------------*/
+h1 {
+    font-size: 36px;
+    border-bottom: solid 1px #68a0c7;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+h3 {
+    color: #8bb2d9;
+    font-size: 20px;
+}
+
+/*-----------------navigation-------------*/
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #e0e0e0;
+}
+
+#page-wrapper{
+  display:flex;
+  align-items:flex-start;
+  min-height:100vh;
+}
+
+/*---------------mainpage(left)----------------*/
+#main-content{
+  flex:1 1 auto;
+  min-width:0; /* flexアイテムの横スクロールを効かせるために必須 */
+  padding:40px clamp(16px,4vw,60px);
+  max-width:100%;
+}
+ 
+/* 600px超では右側にアウトライン分の余白を確保 */
+@media (min-width:601px){
+  #main-content{
+    margin-right:300px;
+  }
+}
+ 
+#main-content h2{
+  margin-top:2.5em;
+  padding-top:70px;   /* fixedヘッダーがある場合のオフセット用。無ければ0でも可 */
+  margin-bottom:0.6em;
+  border-bottom:1px solid var(--border);
+  padding-bottom:0.4em;
+}
+#main-content h2:first-of-type{ margin-top:0; }
+#main-content h3{
+  margin-top:1.6em;
+  color:#d7d7d7;
+}
+ 
+/* 横に大きくはみ出る表を横スクロールにする（縦は出さない） */
+.iframe-wrapper{
+  max-width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  margin:16px 0 24px;
+  border:1px solid var(--border);
+}
+.iframe-wrapper table{
+  border-collapse:collapse;
+  width:1100px; /* 画面より広い＝横スクロールが発生する幅 */
+}
+.iframe-wrapper th,.iframe-wrapper td{
+  border:1px solid var(--border);
+  padding:8px 14px;
+  white-space:nowrap;
+  font-size:14px;
+}
+.iframe-wrapper th{ background:#333; }
+
+
+/* ---------- アウトライン（右） ---------- */
+#menu-wrapper{
+  overflow:hidden;
+  cursor:pointer;
+}
+#menu-wrapper #hamburger-menu{
+  position:fixed;
+  width:25px;
+  height:20px;
+  margin:15px;
+  right:0;
+  top:0;
+  z-index:1001;
+}
+#menu-wrapper #hamburger-menu span{
+  opacity:1;
+  right:0;
+  display:block;
+  width:100%;
+  height:2px;
+  border-radius:10px;
+  background-color:var(--text);
+  position:absolute;
+  transform:rotate(0deg);
+  transition:.4s ease-in-out;
+}
+#menu-wrapper #hamburger-menu span:nth-child(1){ top:0; }
+#menu-wrapper #hamburger-menu span:nth-child(2){ top:9px; }
+#menu-wrapper #hamburger-menu span:nth-child(3){ top:18px; }
+#menu-wrapper #hamburger-menu.open span:nth-child(1){ transform:translateY(9px) rotate(135deg); }
+#menu-wrapper #hamburger-menu.open span:nth-child(2){ opacity:0; transform:translateX(-60px); }
+#menu-wrapper #hamburger-menu.open span:nth-child(3){ transform:translateY(-9px) rotate(-135deg); }
+ 
+#menu-container .menu-list{
+  display: flex;
+  flex-direction: column;
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:100%;
+  max-width:300px;
+  height:100vh;
+  margin:0;
+  padding:60px 0 20px;
+  list-style:none;
+  background:var(--panel);
+  box-shadow:rgba(0,0,0,0.5) -6px 0 12px;
+  overflow-y:hidden;
+  overflow-x:hidden;
+  z-index:1000;
+  transition:right .4s ease-in-out;
+}
+#menu-container .menu-list.active{ right:0; }
+
+#outline-list{
+    flex:1 1 auto;
+    min-height:0;      /* flex子要素で内部スクロールを効かせるために必須 */
+    overflow-y:auto;
+    overflow-x:hidden;
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+ 
+.outline-h1 > a{
+  display:block;
+  padding:5px 20px;
+  color:var(--text);
+  text-decoration:none;
+  font-size:15px;
+  border-top:1px solid var(--border);
+}
+.outline-h1:first-child > a{ border-top:0; }
+
+ 
+/* 現在表示中の見出しをリアルタイムでハイライト */
+.outline-h1 > a.current{
+  color:#fff;
+  background:var(--accent);
+}
+
+/* -------------固定リンク------------------ */
+.menu-static-links{
+    flex:0 0 auto;      /* 縮まない・伸びない＝常に自身のサイズを保持 */
+    margin-top:auto;    /* ← これで下に押し付けられる */
+    list-style:none;
+    padding:0;
+    border-top:1px solid var(--border);
+    background:var(--panel); /* アウトラインがスクロールしても下に重ならないよう背景を敷く */
+}
+.menu-static-links li a{
+    padding:5px 20px;
+    color:var(--muted);
+    text-decoration:none;
+    font-size:14px;
+}
+.menu-static-links li a:hover{
+    color:#fff;
+}
+ 
+/* ---------- 600px境界の切り替え ---------- */
+/* 601px以上：アウトラインは常時fixed表示・ハンバーガー非表示 */
+@media (min-width:601px){
+  #menu-wrapper #hamburger-menu{ display:none; }
+  #menu-container .menu-list{
+    right:0 !important;   /* JSのanimateによるinline styleより優先させる */
+    transition:none;
+    box-shadow:rgba(0,0,0,0.5) -6px 0 12px;
+  }
+}
+/* 600px以下：従来通りハンバーガーで隠す */
+@media (max-width:600px){
+  #main-content{ margin-right:0; }
+  #menu-container .menu-list{ right:-100%; }
+}
+
+
+/* main */
+.log {
+    text-align: right;
+}
+
+main {
+    margin-left: 15px;
+    font-family: あんずもじ;
+    font-size: 20px;
+}
+
+main li {
+    list-style-type: inherit;
+}
+
+iframe {
+    width: 100%;
+    height: 700px;
+    display: block;
+}
+
+/*table*/
+
+.table {
+    overflow-x: scroll;
+}
+
+table {
+    text-align: center;
+    border: solid 2px #e0e0e0;
+    border-collapse: collapse;
+    font-size: 18px;
+}
+
+table th {
+    border: solid 1px #555555;
+    background-color: #333333;
+}
+
+table td {
+    border-left: solid 1px #555555;
+    border-bottom: solid 1px #444444;
+}
+
+.reload {
+    font-size: 18px;
+    color: #e57373;
+    text-align: center
+}
+
+.kisosu {
+    font-size: 16px;
+    color: #8bb2d9;
+    text-decoration: underline;
+}
+
+table.exp tr.pa-title {
+    border: solid 1px #e0e0e0;
+    height: 24;
+}
+
+table.exp td.bod {
+    border-right: solid 2px #e0e0e0;
+    width: 15;
+}
+
+table .Tokyo {
+    background-color: rgb(0, 88, 59);
+}
+
+.atoexp {
+    height: 800px;
+    width: 270px;
+    overflow-y: scroll;
+}
+

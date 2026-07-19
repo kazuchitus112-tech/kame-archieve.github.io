@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Excelの表をHTML形式に変換</title>
+</head>
+
+<body>
+    <p>Excelの表をHTML形式に変換</p>
+    <textarea id="inputText" rows="16" cols="100"></textarea><br>
+    <button onclick="convertToHtml()">htmlに変換</button>
+    <button onclick="Clear()">クリア</button>
+    <br>
+    <textarea id="outputHtml" rows="16" cols="100" readonly></textarea><br>
+    <p>Excel表</p>
+    <div id="ViewHtml"></div>
+
+    <script>
+        function convertToHtml() {
+            // テキストボックスの要素を取得
+            var inputText = document.getElementById("inputText").value.trim();
+            if (inputText === "") {
+                document.getElementById("outputHtml").value = "";
+                return;
+            }
+
+            //行ごとに分割
+            var rows = inputText.split(/\r?\n/);
+
+            //HTML生成
+            var html = "<table border=\"1\">\n";
+
+            for (var i = 0; i < rows.length; i++) {
+                if (rows[i].trim() === "") continue;
+
+                //タブ区切りで列に分割
+                var cols = rows[i].split("\t");
+                html += "<tr>\n";
+
+                for (var j = 0; j < cols.length; j++) {
+                    html += "    <td>" + cols[j].trim() + "</td>\n";
+                }
+
+                html += "  </tr>\n";
+            }
+
+            html += "</table>"
+
+            // 結果を出力用テキストボックスに表示
+            document.getElementById("outputHtml").value = html;
+            document.getElementById("ViewHtml").innerHTML = html;
+
+            //全部コピー
+            navigator.clipboard.writeText(html)
+        }
+
+        function Clear(){
+            var cleartext = "";
+            document.getElementById("inputText").value = cleartext;
+        }
+    </script>
+</body>
+
+</html>

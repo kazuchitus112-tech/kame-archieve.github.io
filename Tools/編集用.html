@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>テキストをHTML形式に変換</title>
+</head>
+
+<body>
+    <p>テキストをHTML形式に変換</p>
+    <textarea id="inputText" rows="16" cols="100"></textarea><br>
+    <button onclick="convertToHtml()">htmlに変換(形式なし)</button><br>
+    <button onclick="convertToHtmlMK()">htmlに変換(Markdown)</button><br>
+    <br>
+    <textarea id="outputHtml" rows="16" cols="100" readonly></textarea><br>
+    <button onclick="CopyAll()">コピー</button>
+    <script>
+        function convertToHtml() {
+            // テキストボックスの要素を取得
+            var inputText = document.getElementById("inputText").value;
+
+            // 改行でテキストを分割して配列に格納
+            var lines = inputText.split('\n');
+
+            // 各行を<p>要素で囲んでHTML形式に変換
+            var htmlText = "";
+            for (var i = 0; i < lines.length; i++) {
+                if (lines[i].trim() !== "") {
+                    htmlText += "<p>" + lines[i] + "</p>\n";
+                }
+            }
+
+            // 結果を出力用テキストボックスに表示
+            document.getElementById("outputHtml").value = htmlText;
+        }
+
+        
+        function convertToHtmlMK() {
+            var inputText = document.getElementById("inputText").value;
+            var lines = inputText.split('\n');
+
+            var htmlText = "";
+            var i = 0;
+
+            while (i < lines.length) {
+
+                var line = lines[i];
+
+                // 太字変換
+                function inline(md) {
+                    return md.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+                }
+
+                // ------------------------
+                // 見出し
+                // ------------------------
+                var heading = line.match(/^(#{1,6})\s+(.*)$/);
+                if (heading) {
+                    var level = Math.min(heading[1].length + 2, 6);
+                    htmlText += "<h" + level + ">" + inline(heading[2]) + "</h" + level + ">\n";
+                    i++;
+                    continue;
+                }
+
+                // ------------------------
+                // テーブル
+                // ------------------------
+                if (
+                    i + 1 < lines.length &&
+                    /^\|.*\|$/.test(lines[i]) &&
+                    /^\|?[\s|:-]+\|[\s|:-]*$/.test(lines[i + 1])
+                ) {
+
+                    htmlText += "<table>\n";
+                    htmlText += "  <thead>\n";
+                    htmlText += "    <tr>\n";
+
+                    var headers = lines[i].split("|").slice(1, -1);
+
+                    headers.forEach(function (cell) {
+                        htmlText += "      <th>" + inline(cell.trim()) + "</th>\n";
+                    });
+
+                    htmlText += "    </tr>\n";
+                    htmlText += "  </thead>\n";
+                    htmlText += "  <tbody>\n";
+
+                    i += 2;
+
+                    while (i < lines.length && /^\|.*\|$/.test(lines[i])) {
+
+                        htmlText += "    <tr>\n";
+
+                        var cells = lines[i].split("|").slice(1, -1);
+
+                        cells.forEach(function (cell) {
+                            htmlText += "      <td>" + inline(cell.trim()) + "</td>\n";
+                        });
+
+                        htmlText += "    </tr>\n";
+                        i++;
+                    }
+
+                    htmlText += "  </tbody>\n";
+                    htmlText += "</table>\n";
+
+                    continue;
+                }
+
+                // ------------------------
+                // 箇条書き
+                // ------------------------
+                if (/^(\*|-)\s+/.test(line)) {
+
+                    htmlText += "<ul>\n";
+
+                    while (i < lines.length && /^(\*|-)\s+/.test(lines[i])) {
+
+                        var item = lines[i].replace(/^(\*|-)\s+/, "");
+                        htmlText += "  <li>" + inline(item) + "</li>\n";
+
+                        i++;
+                    }
+
+                    htmlText += "</ul>\n";
+                    continue;
+                }
+
+                // ------------------------
+                // 番号付きリスト
+                // ------------------------
+                if (/^\d+\.\s+/.test(line)) {
+
+                    htmlText += "<ol>\n";
+
+                    while (i < lines.length && /^\d+\.\s+/.test(lines[i])) {
+
+                        var item = lines[i].replace(/^\d+\.\s+/, "");
+                        htmlText += "  <li>" + inline(item) + "</li>\n";
+
+                        i++;
+                    }
+
+                    htmlText += "</ol>\n";
+                    continue;
+                }
+
+                // ------------------------
+                // 段落
+                // ------------------------
+                if (line.trim() !== "") {
+                    htmlText += "<p>" + inline(line) + "</p>\n";
+                }
+
+                i++;
+            }
+
+            document.getElementById("outputHtml").value = htmlText;
+        }
+
+    function CopyAll(){
+        var outputHtml = document.getElementById("outputHtml").value
+        navigator.clipboard.writeText(outputHtml)
+            .catch(function(err){
+                console.error(err);
+                alert("コピーに失敗しました。");
+            })
+    }
+    </script>
+</body>
+
+</html>
